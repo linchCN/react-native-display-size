@@ -5,15 +5,11 @@ import { Platform } from 'react-native';
 const isAndroid = Platform.OS === 'android';
 
 export function getRealWindowHeight(): number {
-  return DisplaySize.getRealWindowHeight();
+  return isAndroid ? DisplaySize.getRealWindowHeight() : 0;
 }
 
 export function getRealWindowWidth(): number {
   return isAndroid ? DisplaySize.getRealWindowWidth() : 0;
-}
-
-export function isStatusBarTranslucent(): boolean {
-  return isAndroid ? DisplaySize.isStatusBarTranslucent() : 0;
 }
 
 export function getSoftMenuBarHeight(): number {
@@ -29,5 +25,5 @@ export function getSmartBarHeight(): number {
 }
 
 export function getSoftMenuBarEnabled(): boolean {
-  return isAndroid ? DisplaySize.getSoftMenuBarEnabled() : 0;
+  return isAndroid ? DisplaySize.getSoftMenuBarEnabled() : false;
 }

@@ -1,6 +1,6 @@
 {
   "name": "react-native-display-size",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Access additional display metrics on Android devices: status bar height, soft menu bar height, real screen size.",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",

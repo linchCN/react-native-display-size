@@ -1,6 +1,6 @@
 {
   "name": "react-native-display-size",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "description": "Access additional display metrics on Android devices: status bar height, soft menu bar height, real screen size.",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
@@ -21,12 +21,12 @@
     "src",
     "lib",
     "android",
-    "ios",
+    "!ios",
     "cpp",
     "*.podspec",
+    "android/build/generated",
     "react-native.config.json",
     "!ios/build",
-    "!android/build",
     "!android/gradle",
     "!android/gradlew",
     "!android/gradlew.bat",
@@ -54,18 +54,17 @@
     "type": "git",
     "url": "git+https://github.com/linchCN/react-native-display-size/react-native-display-size.git"
   },
-  "author": "linch <369955292@qq.com> (https://github.com/linchCN/react-native-display-size)",
+  "author": "linch <369955292@qq.com> (https://github.com/linchCN)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/linchCN/react-native-display-size/react-native-display-size/issues"
+    "url": "https://github.com/linchCN/react-native-display-size/issues"
   },
-  "homepage": "https://github.com/linchCN/react-native-display-size/react-native-display-size#readme",
+  "homepage": "https://github.com/linchCN/react-native-display-size/#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^17.0.2",
-    "@evilmartians/lefthook": "^1.5.0",
     "@react-native-community/cli": "15.0.0",
     "@react-native/eslint-config": "^0.73.1",
     "@release-it/conventional-changelog": "^5.0.0",
@@ -187,11 +186,10 @@
     "type": "all",
     "jsSrcsDir": "src",
     "outputDir": {
-      "ios": "ios/generated",
-      "android": "android/generated"
+      "android": "android/build/generated/source/codegen"
     },
     "android": {
-      "javaPackageName": "com.displaysize"
+      "javaPackageName": "com.rn.displaysize"
     },
     "includesGeneratedCode": true
   },

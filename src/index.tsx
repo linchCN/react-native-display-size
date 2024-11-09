@@ -1,29 +1,33 @@
-import { NativeModules, Platform } from 'react-native';
+// @ts-ignore
+import * as DisplaySize from './DisplaySize';
+import { Platform } from 'react-native';
 
-const LINKING_ERROR =
-  `The package 'react-native-display-size' doesn't seem to be linked. Make sure: \n\n` +
-  Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
-  '- You rebuilt the app after installing the package\n' +
-  '- You are not using Expo Go\n';
+const isAndroid = Platform.OS === 'android';
 
-// @ts-expect-error
-const isTurboModuleEnabled = global.__turboModuleProxy != null;
+export function getRealWindowHeight(): number {
+  return DisplaySize.getRealWindowHeight();
+}
 
-const DisplaySizeModule = isTurboModuleEnabled
-  ? require('./NativeDisplaySize').default
-  : NativeModules.DisplaySize;
+export function getRealWindowWidth(): number {
+  return isAndroid ? DisplaySize.getRealWindowWidth() : 0;
+}
 
-const DisplaySize = DisplaySizeModule
-  ? DisplaySizeModule
-  : new Proxy(
-      {},
-      {
-        get() {
-          throw new Error(LINKING_ERROR);
-        },
-      }
-    );
+export function isStatusBarTranslucent(): boolean {
+  return isAndroid ? DisplaySize.isStatusBarTranslucent() : 0;
+}
 
-export function multiply(a: number, b: number): Promise<number> {
-  return DisplaySize.multiply(a, b);
+export function getSoftMenuBarHeight(): number {
+  return isAndroid ? DisplaySize.getSoftMenuBarHeight() : 0;
+}
+
+export function getStatusBarHeight(): number {
+  return isAndroid ? DisplaySize.getStatusBarHeight() : 0;
+}
+
+export function getSmartBarHeight(): number {
+  return isAndroid ? DisplaySize.getSmartBarHeight() : 0;
+}
+
+export function getSoftMenuBarEnabled(): boolean {
+  return isAndroid ? DisplaySize.getSoftMenuBarEnabled() : 0;
 }

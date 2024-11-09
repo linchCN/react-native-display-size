@@ -1,6 +1,8 @@
 # react-native-display-size
 
 Access additional display metrics on Android devices: status bar height, soft menu bar height, real screen size.
+Based on the react-native-extra-dimensions-android project.
+Support New Architectures
 
 ## Installation
 
@@ -10,15 +12,18 @@ npm install react-native-display-size
 
 ## Usage
 
-
 ```js
-import { multiply } from 'react-native-display-size';
 
-// ...
 
-const result = await multiply(3, 7);
+const realWindowHeight: number = getRealWindowHeight();
+const realWindowWidth: number = getRealWindowWidth();
+const softMenuBarHeight: number = getSoftMenuBarHeight();
+const statusBarHeight: number = getStatusBarHeight();
+const smartBarHeight: number = getSmartBarHeight();
+const softMenuBarEnabled: number = getSoftMenuBarEnabled();
+
+
 ```
-
 
 ## Contributing
 
